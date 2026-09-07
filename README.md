@@ -1,5 +1,8 @@
 # Terraform Module: UptimeRobot Whitelist
 
+[![test-terraform](https://github.com/IGNF/tf-uptimerobot-whitelist/actions/workflows/test-terraform.yml/badge.svg)](https://github.com/IGNF/tf-uptimerobot-whitelist/actions/workflows/test-terraform.yml)
+[![test-opentofu](https://github.com/IGNF/tf-uptimerobot-whitelist/actions/workflows/test-opentofu.yml/badge.svg)](https://github.com/IGNF/tf-uptimerobot-whitelist/actions/workflows/test-opentofu.yml)
+
 > [!CAUTION]
 > **EXPERIMENTAL MODULE**
 > This module is experimental and may change at any time, including breaking changes between versions.
