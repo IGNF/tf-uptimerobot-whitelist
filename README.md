@@ -58,7 +58,7 @@ It is useful when you need to whitelist UptimeRobot in firewalls, security group
 
 ```hcl
 module "uptimerobot_whitelist" {
-  source = "github.com/IGNF/tf-uptimerobot-whitelist"
+  source = "github.com/IGNF/tf-uptimerobot-whitelist?ref=v0.1.0"
 
   # Optional override
   # uptimerobot_ips_url = "https://api.uptimerobot.com/meta/ips"
