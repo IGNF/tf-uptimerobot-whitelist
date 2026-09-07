@@ -110,3 +110,7 @@ What is validated:
 ## License
 
 This module is licensed under the MIT License. See [LICENSE](LICENSE).
+
+## Transparency
+
+This module was drafted with AI assistance and validated by maintainers.
