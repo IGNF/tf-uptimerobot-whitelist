@@ -1,5 +1,10 @@
 # Terraform Module: UptimeRobot Whitelist
 
+> [!CAUTION]
+> # EXPERIMENTAL MODULE
+> This module is experimental and may change at any time, including breaking changes between versions.
+> Use it with caution in production environments.
+
 This module fetches the public monitor source IP ranges published by UptimeRobot and exposes them as ready-to-use CIDR lists.
 
 It is useful when you need to whitelist UptimeRobot in firewalls, security groups, WAF rules, or other network access controls.
@@ -50,7 +55,7 @@ It is useful when you need to whitelist UptimeRobot in firewalls, security group
 
 ```hcl
 module "uptimerobot_whitelist" {
-  source = "./tf-uptimerobot-whitelist"
+  source = "github.com/IGNF/tf-uptimerobot-whitelist"
 
   # Optional override
   # uptimerobot_ips_url = "https://api.uptimerobot.com/meta/ips"
