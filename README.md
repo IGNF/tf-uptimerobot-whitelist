@@ -5,7 +5,7 @@
 > This module is experimental and may change at any time, including breaking changes between versions.
 > Use it with caution in production environments.
 
-This module fetches the public monitor source IP ranges published by UptimeRobot and exposes them as ready-to-use CIDR lists.
+This module fetches the public monitor source [IP ranges published by UptimeRobot](https://uptimerobot.com/help/locations/) (https://api.uptimerobot.com/meta/ips) and exposes them as ready-to-use CIDR lists.
 
 It is useful when you need to whitelist UptimeRobot in firewalls, security groups, WAF rules, or other network access controls.
 
@@ -72,14 +72,14 @@ output "uptimerobot_ipv4" {
 }
 
 # Example: consume by region
-output "uptimerobot_by_region" {
-  value = module.uptimerobot_whitelist.uptimerobot_whitelist_cidrs_by_region
+output "uptimerobot_europe" {
+  value = module.uptimerobot_whitelist.uptimerobot_whitelist_cidrs_by_region["EUROPE"]
 }
 ```
 
 ## Notes
 
-- Region keys are uppercased in grouped outputs (for example: `US_EAST`, `EU_WEST`, `UNKNOWN`).
+- Region keys are uppercased in grouped outputs (for example: `EUROPE`, `NORTH-AMERICA`, `UNKNOWN`).
 - Empty or unrecognized prefixes are ignored.
 - The module is data-only and does not create infrastructure resources by itself.
 
