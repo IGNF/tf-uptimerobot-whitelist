@@ -12,6 +12,11 @@ run "outputs_are_not_empty_and_valid_cidrs" {
     ])
     error_message = "All values in uptimerobot_whitelist_cidrs must be valid CIDRs."
   }
+
+  assert {
+    condition     = output.uptimerobot_whitelist_cidrs == sort(output.uptimerobot_whitelist_cidrs)
+    error_message = "uptimerobot_whitelist_cidrs must be sorted for deterministic plans."
+  }
 }
 
 run "ipv4_ipv6_outputs_are_consistent" {
@@ -44,6 +49,16 @@ run "ipv4_ipv6_outputs_are_consistent" {
     ])
     error_message = "Every IPv6 CIDR must also exist in the global CIDR output."
   }
+
+  assert {
+    condition     = output.uptimerobot_whitelist_ipv4_cidrs == sort(output.uptimerobot_whitelist_ipv4_cidrs)
+    error_message = "uptimerobot_whitelist_ipv4_cidrs must be sorted for deterministic plans."
+  }
+
+  assert {
+    condition     = output.uptimerobot_whitelist_ipv6_cidrs == sort(output.uptimerobot_whitelist_ipv6_cidrs)
+    error_message = "uptimerobot_whitelist_ipv6_cidrs must be sorted for deterministic plans."
+  }
 }
 
 run "regional_outputs_are_consistent" {
@@ -61,5 +76,26 @@ run "regional_outputs_are_consistent" {
       for region in keys(output.uptimerobot_whitelist_cidrs_by_region) : region == upper(region)
     ])
     error_message = "Region keys must be uppercase."
+  }
+
+  assert {
+    condition = alltrue([
+      for cidrs in values(output.uptimerobot_whitelist_cidrs_by_region) : cidrs == sort(cidrs)
+    ])
+    error_message = "All regional CIDR lists must be sorted for deterministic plans."
+  }
+
+  assert {
+    condition = alltrue([
+      for cidrs in values(output.uptimerobot_whitelist_ipv4_cidrs_by_region) : cidrs == sort(cidrs)
+    ])
+    error_message = "All regional IPv4 CIDR lists must be sorted for deterministic plans."
+  }
+
+  assert {
+    condition = alltrue([
+      for cidrs in values(output.uptimerobot_whitelist_ipv6_cidrs_by_region) : cidrs == sort(cidrs)
+    ])
+    error_message = "All regional IPv6 CIDR lists must be sorted for deterministic plans."
   }
 }
